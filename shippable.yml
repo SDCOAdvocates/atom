@@ -8,6 +8,6 @@ runtime:
 build:
  ci:
   - sudo apt-get install -y build-essential git libsecret-1-dev fakeroot npm python rpm libx11-dev libxkbfile-dev
-  - script/bootstrap
-  - script/build
+  - ./script/bootstrap
+  - ./script/build
   

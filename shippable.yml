@@ -8,7 +8,7 @@ env:
  - NODE_VERSION=8.9.3 DISPLAY=:99.0 CC=clang CXX=clang++ npm_config_clang=1
 build:
  ci:
-  - sudo apt-get update && sudo apt-get install -y clang-3.5 fakeroot git libsecret-1-dev libx11-dev libxkbfile-dev build-essential nodejs python rpm 
+  - sudo apt-get update && sudo apt-get install -y clang-3.5 clang++ fakeroot git libsecret-1-dev libx11-dev libxkbfile-dev build-essential nodejs python rpm 
   - npm --version
   - git clone https://github.com/creationix/nvm.git /tmp/.nvm
   - source /tmp/.nvm/nvm.sh

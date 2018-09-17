@@ -4,11 +4,18 @@ sudo: required
 
 runtime:
   nodePool: shippable_shared_aarch64
-  
+env:
+ - NODE_VERSION=8.9.3 DISPLAY=:99.0 CC=clang CXX=clang++ npm_config_clang=1
 build:
  ci:
-  - sudo apt-get update && sudo apt-get install -y build-essential fakeroot git libsecret-1-dev libx11-dev libxkbfile-dev nodejs python rpm
+  - sudo apt-get update && sudo apt-get install -y clang-3.3 fakeroot git libsecret-1-dev libx11-dev libxkbfile-dev libxkbfile-devbuild-essential nodejs python rpm 
   - npm --version
+  - git clone https://github.com/creationix/nvm.git /tmp/.nvm
+  - source /tmp/.nvm/nvm.sh
+  - nvm install $NODE_VERSION
+  - nvm use --delete-prefix $NODE_VERSION
+  - npm install --global npm@6.2.0
+  - script/build --create-debian-package --create-rpm-package --compress-artifacts
   - ./script/bootstrap
   - ./script/build
   
